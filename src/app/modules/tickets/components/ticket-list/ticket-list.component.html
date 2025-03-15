@@ -1,0 +1,64 @@
+<div class="ticket-list-container">
+  <div class="ticket-list-header">
+    <h1>Tickets List</h1>
+    <button mat-raised-button color="primary" routerLink="/tickets/create">Create Ticket</button>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Ticket ID </th>
+      <td mat-cell *matCellDef="let ticket"> {{ticket.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="color">
+      <th mat-header-cell *matHeaderCellDef> Priority </th>
+      <td mat-cell *matCellDef="let ticket">
+        <div class="color-sphere" [ngStyle]="{'background-color': getColor(ticket.created)}"></div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="created">
+      <th mat-header-cell *matHeaderCellDef> Created </th>
+      <td mat-cell *matCellDef="let ticket"> {{ticket.created | date:'short'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="phoneNumber">
+      <th mat-header-cell *matHeaderCellDef> Phone </th>
+      <td mat-cell *matCellDef="let ticket"> {{ticket.phoneNumber}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="governorate">
+      <th mat-header-cell *matHeaderCellDef> Governorate </th>
+      <td mat-cell *matCellDef="let ticket"> {{ticket.governorate}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef> City </th>
+      <td mat-cell *matCellDef="let ticket"> {{ticket.city}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="district">
+      <th mat-header-cell *matHeaderCellDef> District </th>
+      <td mat-cell *matCellDef="let ticket"> {{ticket.district}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let ticket"> {{ticket.status}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let ticket">
+        <button mat-button color="accent" (click)="handleTicket(ticket.id)">Handle</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [length]="totalCount" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25]" (page)="onPageChange($event)">
+  </mat-paginator>
+</div>

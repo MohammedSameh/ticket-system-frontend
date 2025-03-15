@@ -1,0 +1,40 @@
+<div class="ticket-create-container">
+  <h2>Create Ticket</h2>
+  <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Phone Number</mat-label>
+      <input matInput formControlName="phoneNumber" placeholder="Enter 10-digit phone number">
+      <mat-error *ngIf="ticketForm.get('phoneNumber')?.hasError('required')">
+        Phone number is required.
+      </mat-error>
+      <mat-error *ngIf="ticketForm.get('phoneNumber')?.hasError('pattern')">
+        Phone number must be exactly 10 digits.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Governorate</mat-label>
+      <input matInput formControlName="governorate" placeholder="Enter governorate">
+      <mat-error *ngIf="ticketForm.get('governorate')?.hasError('required')">
+        Governorate is required.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>City</mat-label>
+      <input matInput formControlName="city" placeholder="Enter city">
+      <mat-error *ngIf="ticketForm.get('city')?.hasError('required')">
+        City is required.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>District</mat-label>
+      <input matInput formControlName="district" placeholder="Enter district">
+      <mat-error *ngIf="ticketForm.get('district')?.hasError('required')">
+        District is required.
+      </mat-error>
+    </mat-form-field>
+    <div class="button-row">
+      <button mat-raised-button color="primary" type="submit">Create Ticket</button>
+      <button mat-stroked-button color="primary" type="button" (click)="onBack()">Back to List</button>
+    </div>
+  </form>
+</div>

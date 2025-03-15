@@ -1,0 +1,25 @@
+.ticket-list-container {
+  margin: 20px;
+
+  .ticket-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+      margin: 0;
+    }
+  }
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.color-sphere {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
